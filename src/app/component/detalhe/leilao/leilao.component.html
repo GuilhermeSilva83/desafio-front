@@ -1,0 +1,89 @@
+<mat-card class="container">
+    <mat-card-header>
+        <mat-card-title>Cadastro de Leilão - Detalhe</mat-card-title>
+        <!-- <mat-card-subtitle></mat-card-subtitle> -->
+    </mat-card-header>
+    <mat-card-content>
+        <form class="example-form" #form (submit)="submit(form)">
+
+            <div class="col">
+
+                <mat-form-field class="row col-12">
+                    <input matInput placeholder="Nome" name="nome" [(ngModel)]="obj.nome" #nome required>
+                </mat-form-field>
+
+                <mat-form-field class="row col-12">
+                    <input matInput placeholder="Valor Inicial" name="valorInicial" [(ngModel)]="obj.valorInicial"
+                        currencyMask type="text" maxlength="11" #valorInicial required>
+                </mat-form-field>
+
+                <mat-form-field class="row col-12">
+                    <mat-label>Data Abertura</mat-label>
+                    <input matInput [matDatepicker]="da" name="dataAbertura" [(ngModel)]="obj.dataAbertura"
+                        #dataAbertura autocomplete="off" required>
+                    <mat-datepicker-toggle matSuffix [for]="da"></mat-datepicker-toggle>
+                    <mat-datepicker #da></mat-datepicker>
+                </mat-form-field>
+
+
+                <mat-form-field class="row col-12">
+                    <mat-label>Data Finalização</mat-label>
+                    <input matInput [matDatepicker]="df" name="dataFinalizacao" [(ngModel)]="obj.dataFinalizacao"
+                        #dataFinalizacao autocomplete="off" required>
+                    <mat-datepicker-toggle matSuffix [for]="df"></mat-datepicker-toggle>
+                    <mat-datepicker #df></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field class="row col-12">
+                    <mat-label>Responsável</mat-label>
+                    <mat-select [(value)]="obj.usuarioResponsavelId" #usuarioResponsavelId id="usuarioResponsavelId">
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let item of this.usuarios" [value]="item.id">
+                            {{item.nome}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+
+                <div class="row col">
+                    <button class="btn btn-primary" type="submit">
+                        Salvar
+                    </button>
+                    &nbsp;
+                    <a class="btn btn-primary" [routerLink]="['/leilao']">
+                        Cancelar
+                    </a>
+                </div>
+            </div>
+
+            <div class="form-group">
+
+
+                <!-- <div *ngIf="valorInicial.errors?.required" class="alert alert-warning" role="alert">
+                    Valor Inicial obrigatório.
+                </div>
+
+                <div *ngIf="dataAbertura.errors?.required" class="alert alert-warning" role="alert">
+                    Data de Abertura obrigatória.
+                </div>
+
+                <div *ngIf="dataFinalizacao.errors?.required" class="alert alert-warning" role="alert">
+                    Data de Finalização obrigatória.
+                </div> -->
+
+                <!-- <div *ngIf="this.obj.usuarioResponsavelId == null && usuarioResponsavelId.ngControl.errors?.required"
+                    class="alert alert-warning" role="alert">
+                    Usuário responsável obrigatório.
+                </div> -->
+
+
+
+                <div *ngIf="erro != null" class="alert alert-danger row" role="alert">
+                    {{ erro }}
+                </div>
+            </div>
+
+
+        </form>
+    </mat-card-content>
+</mat-card>

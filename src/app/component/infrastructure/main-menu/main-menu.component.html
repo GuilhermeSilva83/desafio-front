@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" [routerLink]="['./']" [routerLinkActiveOptions]="{exact: true}"
+                routerLinkActive="active">Início</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink='/leilao' routerLinkActive="active">Leilões</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" (click)="Sair()" style="cursor: pointer;">
+                Sair
+            </a>
+        </li>
+    </ul>
+</nav>
+<br>
